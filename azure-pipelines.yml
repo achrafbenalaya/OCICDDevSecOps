@@ -10,10 +10,10 @@ pool:
   vmImage: 'Ubuntu 16.04'
   # vmImage: 'Ubuntu 16.04'
 
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+# variables:
+#   solution: '**/*.sln'
+#   buildPlatform: 'Any CPU'
+#   buildConfiguration: 'Release'
 
 steps:
 - task: NuGetToolInstaller@1
@@ -40,7 +40,7 @@ steps:
 #   inputs:
 #     platform: '$(buildPlatform)'
 #     configuration: '$(buildConfiguration)'
-    
+  condition: succeeded()
 - script: bash <(curl -s https://copilot-valid.blackducksoftware.com/ci/azure/scripts/upload)
   displayName: 'black Duck'
 
